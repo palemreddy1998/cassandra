@@ -1,0 +1,52 @@
+1).go to rooot user and create hadoop user and password
+$ sudo su
+password:
+# sudo dscl . -create /Users/hadoop
+# sudo dscl . -passwd /Users/hadoop hadoop
+
+
+delete user
+sudo dscl . -delete /Users/$user
+
+find list of users
+dscl . list /Users | grep -v '^_'
+
+2).Enable remote login and geneate ssh keys
+Enable Remote Login in System Preference -> Sharing.
+ssh localhost
+
+ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+
+3).local cassandra location
+cassandra location
+/usr/local/Cellar/cassandra/3.11.1
+
+4).Start Cassandra query language shell
+Start cqlsh using the command cqlsh ( Cassandra query language shell)
+
+brew install python
+pip install cql
+brew install cassandra
+start Cassandra: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+stop Cassandra:launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+
+Cassandra file locations
+Properties: /usr/local/etc/cassandra
+Logs: /usr/local/var/log/cassandra
+Data: /usr/local/var/lib/cassandra/data
+
+5).Satrt cassandra query lanaguage shell
+cqlsh
+DESCRIBE KEYSPACES;
+DESCRIBE TABLES;
+select * from system_distributed.repair_history;
+
+6).Describe current cluster
+describe cluster;
+
+DESCRIBE TYPES;
+
+7).see current host
+ show host;
+ 
